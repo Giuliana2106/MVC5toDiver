@@ -4,19 +4,20 @@
         public function Login()
         {
             $persona = new Usuario();
+            $smarty= new Smarty();
             $user=$_POST['nombre'];
             $pass=$_POST['pass'];
 
-            $dato=$user->BuscarUsuario($user, $pass);
+            $dato=$persona->BuscarUsuario($user, $pass);
 
             if ($dato->num_rows==1)
             {
-                $smarty->('$nombre', 'Inventario');
-                
+                $smarty->assign('nombre', 'Inventario');
+                $smarty->display('Inventario.tpl');  
             }
             else
             {
-                echo "no user";
+                $smarty->display('Home.tpl');
             }
 
         }

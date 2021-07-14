@@ -6,14 +6,15 @@ function CargadorClase($class)
     {
         include('Controller/'.$class.'.Controller.php');
     }
-    else if (is_file('Model/'.$class.'.Controller.php'))
+    else if (is_file('Model/'.$class.'.Model.php'))
     {
-        include('Model/'.$class.'.Controller.php');
+        include('Model/'.$class.'.Model.php');
     }
     else if (is_file('Framework/Smarty/'.$class.'.class.php'))
     {
         include('Framework/Smarty/'.$class.'.class.php');
     }
+
 }
 
     spl_autoload_register('CargadorClase');
